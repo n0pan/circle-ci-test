@@ -12,7 +12,7 @@ dependencies:
 jobs:
   one:
     docker:
-      - image: cimg/node:15
+      - image: cimg/node:16.5.0
     steps:
       - checkout
       - run: npm run test
