@@ -1,0 +1,21 @@
+# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1
+
+jobs:
+  one:
+    docker:
+      - image: cimg/node:16.5.0
+    steps:
+      - checkout
+      - run: curl https://install.meteor.com | /bin/sh
+      - run: meteor npm i
+      - run: npm run test
+
+workflows:
+  version: 2
+  run_jobs:
+    jobs:
+      - one
