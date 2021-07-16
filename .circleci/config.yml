@@ -3,11 +3,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.1
-  
-dependencies:
-  override:
-    - curl https://install.meteor.com | /bin/sh
-    - meteor npm install
 
 jobs:
   one:
@@ -15,6 +10,8 @@ jobs:
       - image: cimg/node:16.5.0
     steps:
       - checkout
+      - run: curl https://install.meteor.com | /bin/sh
+      - run: meteor npm i
       - run: npm run test
 
 workflows:
